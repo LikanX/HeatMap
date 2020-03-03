@@ -3,6 +3,7 @@ import pandas as pd
 import string
 import operator
 import datetime
+import matplotlib.pyplot as plt
 
 
 df_BPV = pd.read_csv('BPV.csv', sep=';', error_bad_lines=False, index_col=False, dtype='unicode')
@@ -21,6 +22,7 @@ top_SSSS
 
 
 df_test = pd.DataFrame()
+df_test['Position'] = df_Retail['ScanningPosition']
 df_test['Date'] = df_Retail['TimeStamp']
 unique_retailers = df_test.Position.unique()
 
@@ -42,7 +44,6 @@ df_test.loc[(df_test.Position == 'Verslun2Austur'), 'Y'] = 9
 
 # df_Retail['TimeStamp'] = pd.to_datetime(df_Retail['TimeStamp'])
 
-
 # new = df_Retail['TimeStamp'].str.split(" ", n = 1, expand = True) 
 
 # df_Retail['Date'] = new[0]
@@ -53,3 +54,6 @@ df_test.loc[(df_test.Position == 'Verslun2Austur'), 'Y'] = 9
 # df_Retail['Time']= pd.to_datetime(df_Retail['Time']) 
 
 # df_Retail.info()
+
+df_test['Date'] = pd.to_datetime(df_test['Date'])
+
