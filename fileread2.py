@@ -5,7 +5,7 @@ import operator
 import datetime
 import matplotlib.pyplot as plt
 
-
+# les gogn
 df_BPV = pd.read_csv('BPV.csv', sep=';', error_bad_lines=False, index_col=False, dtype='unicode')
 top_BPV = df_BPV.head()
 top_BPV
@@ -21,12 +21,14 @@ top_SSSS = df_SSSS.head()
 top_SSSS
 
 
+# Byr til nyja toflu
 df_test = pd.DataFrame()
 df_test['Position'] = df_Retail['ScanningPosition']
 df_test['Date'] = df_Retail['TimeStamp']
 unique_retailers = df_test.Position.unique()
 
 
+# Skilgreina verslanir með hnitum
 df_test.loc[(df_test.Position == 'Veitingastadur1'), 'X'] = 5
 df_test.loc[(df_test.Position == 'Veitingastadur1'), 'Y'] = 4
 
@@ -42,18 +44,6 @@ df_test.loc[(df_test.Position == 'Verslun1Austur'), 'Y'] = 8
 df_test.loc[(df_test.Position == 'Verslun2Austur'), 'X'] = 9
 df_test.loc[(df_test.Position == 'Verslun2Austur'), 'Y'] = 9
 
-# df_Retail['TimeStamp'] = pd.to_datetime(df_Retail['TimeStamp'])
-
-# new = df_Retail['TimeStamp'].str.split(" ", n = 1, expand = True) 
-
-# df_Retail['Date'] = new[0]
-# df_Retail['Time'] = new[1]
-
-# df_Retail['Date']= pd.to_datetime(df_Retail['Date']) 
-# df_Retail['year']= pd.to_datetime(df_Retail['year']) 
-# df_Retail['Time']= pd.to_datetime(df_Retail['Time']) 
-
-# df_Retail.info()
-
-df_test['Date'] = pd.to_datetime(df_test['Date'])
+#plottar counter af verlunum
+pd.value_counts(df_test['Position']).plot(kind='bar')
 
