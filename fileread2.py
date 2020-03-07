@@ -4,6 +4,7 @@ import string
 import operator
 import datetime
 import matplotlib.pyplot as plt
+import numpy as np
 
 # les gogn
 df_BPV = pd.read_csv('BPV.csv', sep=';', error_bad_lines=False, index_col=False, dtype='unicode')
