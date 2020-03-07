@@ -29,20 +29,28 @@ unique_retailers = df_test.Position.unique()
 
 
 # Skilgreina verslanir með hnitum
-df_test.loc[(df_test.Position == 'Veitingastadur1'), 'X'] = 5
-df_test.loc[(df_test.Position == 'Veitingastadur1'), 'Y'] = 4
+df_test.loc[(df_test.Position == 'Veitingastadur1'), 'X'] = 8
+df_test.loc[(df_test.Position == 'Veitingastadur1'), 'Y'] = 8
 
 df_test.loc[(df_test.Position == 'Verslun1Vestur'), 'X'] = 1
-df_test.loc[(df_test.Position == 'Verslun1Vestur'), 'Y'] = 3
+df_test.loc[(df_test.Position == 'Verslun1Vestur'), 'Y'] = 7
 
-df_test.loc[(df_test.Position == 'Verslun2Vestur'), 'X'] = 6
-df_test.loc[(df_test.Position == 'Verslun2Vestur'), 'Y'] = 7
+df_test.loc[(df_test.Position == 'Verslun2Vestur'), 'X'] = 4
+df_test.loc[(df_test.Position == 'Verslun2Vestur'), 'Y'] = 6
 
 df_test.loc[(df_test.Position == 'Verslun1Austur'), 'X'] = 8
-df_test.loc[(df_test.Position == 'Verslun1Austur'), 'Y'] = 8
+df_test.loc[(df_test.Position == 'Verslun1Austur'), 'Y'] = 1
 
-df_test.loc[(df_test.Position == 'Verslun2Austur'), 'X'] = 9
-df_test.loc[(df_test.Position == 'Verslun2Austur'), 'Y'] = 9
+df_test.loc[(df_test.Position == 'Verslun2Austur'), 'X'] = 5
+df_test.loc[(df_test.Position == 'Verslun2Austur'), 'Y'] = 1
+
+
+x = df_test['X']
+y = df_test['Y']
+
+
+plt.hist2d(x,y, bins=[np.arange(0,11,1),np.arange(0,11,1)], cmap=plt.cm.jet)
+plt.show()
 
 #plottar counter af verlunum
 pd.value_counts(df_test['Position']).plot(kind='bar')
