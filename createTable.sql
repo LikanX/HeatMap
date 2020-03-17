@@ -5,6 +5,6 @@ CREATE TABLE Kef_main (
     entertime           timestamp,
     leavetime           timestamp,
     totaltime           int,
-    flightname          varchar(255),
+    flightname          varchar(255)
 
 );
