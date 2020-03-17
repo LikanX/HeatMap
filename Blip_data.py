@@ -36,6 +36,21 @@ con.close()
 # Verify that there are no existing tables
 print(engine.table_names())
 
+# að fá info til baka frá database sql
+engine_string = "postgresql+psycopg2://{postgres}:{Jakkih17}@{localhost}:{5432}/{likanx}".format(
+    user = 'postgres',
+    password = 'Jakkih17',
+    host = 'localhost',
+    port = '5432',
+    database = 'likanx',
+)
+
+# create sqlalchemy engine
+engine = create_engine(engine_string)
+
+# read a table from database into pandas dataframe, replace "tablename" with your table name
+df = pd.read_sql_table('likanx',engine)
+
 
 # Skilgreina X og Y hnit
 df_people.loc[(df_people.area == 'Total Journey'), 'X'] = 25
@@ -68,22 +83,22 @@ df_people.loc[(df_people.area == 'Area: Food Area'), 'Y'] = 3
 df_people.loc[(df_people.area == 'Area: Gate C/D24-29, C, E'), 'X'] = 4
 df_people.loc[(df_people.area == 'Area: Gate C/D24-29, C, E'), 'Y'] = 2
 
-df_people.loc[(df_people.area == 'Area: Pier D West'), 'X'] = 6,5
-df_people.loc[(df_people.area == 'Area: Pier D West'), 'Y'] = 2,5
+df_people.loc[(df_people.area == 'Area: Pier D West'), 'X'] = 6.5
+df_people.loc[(df_people.area == 'Area: Pier D West'), 'Y'] = 2.5
 
 df_people.loc[(df_people.area == 'Area: Check-in Total'), 'X'] = 13
 df_people.loc[(df_people.area == 'Area: Check-in Total'), 'Y'] = 17
 
 df_people.loc[(df_people.area == 'Area: Check-in B-C'), 'X'] = 8
-df_people.loc[(df_people.area == 'Area: Check-in B-C'), 'Y'] = 17,5
+df_people.loc[(df_people.area == 'Area: Check-in B-C'), 'Y'] = 17.5
 
 df_people.loc[(df_people.area == 'Area: Joe & The Juice'), 'X'] = 8
-df_people.loc[(df_people.area == 'Area: Joe & The Juice'), 'Y'] = 18,5
+df_people.loc[(df_people.area == 'Area: Joe & The Juice'), 'Y'] = 18.5
 
-df_people.loc[(df_people.area == 'Area: Arrival Pick-up'), 'X'] = 9,5
-df_people.loc[(df_people.area == 'Area: Arrival Pick-up'), 'Y'] = 17,5
+df_people.loc[(df_people.area == 'Area: Arrival Pick-up'), 'X'] = 9.5
+df_people.loc[(df_people.area == 'Area: Arrival Pick-up'), 'Y'] = 17.5
 
-df_people.loc[(df_people.area == 'Area: Security'), 'X'] = 18,5
+df_people.loc[(df_people.area == 'Area: Security'), 'X'] = 18.5
 df_people.loc[(df_people.area == 'Area: Security'), 'Y'] = 18
 
 df_people.loc[(df_people.area == 'Area: Departing Duty Free'), 'X'] = 20
@@ -92,8 +107,8 @@ df_people.loc[(df_people.area == 'Area: Departing Duty Free'), 'Y'] = 17
 df_people.loc[(df_people.area == 'Area: Lounge'), 'X'] = 19
 df_people.loc[(df_people.area == 'Area: Lounge'), 'Y'] = 15
 
-df_people.loc[(df_people.area == 'Area: Check-in Kiosk'), 'X'] = 6,5
-df_people.loc[(df_people.area == 'Area: Check-in Kiosk'), 'Y'] = 18,5
+df_people.loc[(df_people.area == 'Area: Check-in Kiosk'), 'X'] = 6.5
+df_people.loc[(df_people.area == 'Area: Check-in Kiosk'), 'Y'] = 18.5
 
 df_people.loc[(df_people.area == 'Area: Check-in A'), 'X'] = 6
 df_people.loc[(df_people.area == 'Area: Check-in A'), 'Y'] = 17
@@ -101,17 +116,17 @@ df_people.loc[(df_people.area == 'Area: Check-in A'), 'Y'] = 17
 df_people.loc[(df_people.area == 'Area: Baggage Reclaim'), 'X'] = 9
 df_people.loc[(df_people.area == 'Area: Baggage Reclaim'), 'Y'] = 15
 
-df_people.loc[(df_people.area == 'Area: Non-Schengen Duty Free'), 'X'] = 8,5
+df_people.loc[(df_people.area == 'Area: Non-Schengen Duty Free'), 'X'] = 8.5
 df_people.loc[(df_people.area == 'Area: Non-Schengen Duty Free'), 'Y'] = 4
 
-df_people.loc[(df_people.area == 'Area: Pier D East'), 'X'] = 8,5
-df_people.loc[(df_people.area == 'Area: Pier D East'), 'Y'] = 2,5
+df_people.loc[(df_people.area == 'Area: Pier D East'), 'X'] = 8.5
+df_people.loc[(df_people.area == 'Area: Pier D East'), 'Y'] = 2.5
 
 df_people.loc[(df_people.area == 'Area: Transfer Security'), 'X'] = 4
 df_people.loc[(df_people.area == 'Area: Transfer Security'), 'Y'] = 5
 
 df_people.loc[(df_people.area == 'Area: Tax Refund'), 'X'] = 10
-df_people.loc[(df_people.area == 'Area: Tax Refund'), 'Y'] = 18,5
+df_people.loc[(df_people.area == 'Area: Tax Refund'), 'Y'] = 18.5
 
 df_people.loc[(df_people.area == 'Area: Pier D North'), 'X'] = 8
 df_people.loc[(df_people.area == 'Area: Pier D North'), 'Y'] = 7
@@ -119,8 +134,8 @@ df_people.loc[(df_people.area == 'Area: Pier D North'), 'Y'] = 7
 df_people.loc[(df_people.area == 'Area: Arriving Duty Free'), 'X'] = 8
 df_people.loc[(df_people.area == 'Area: Arriving Duty Free'), 'Y'] = 16
 
-df_people.loc[(df_people.area == 'Area: Gate A1-2'), 'X'] = 22,5
-df_people.loc[(df_people.area == 'Area: Gate A1-2'), 'Y'] = 14,5
+df_people.loc[(df_people.area == 'Area: Gate A1-2'), 'X'] = 22.5
+df_people.loc[(df_people.area == 'Area: Gate A1-2'), 'Y'] = 14.5
 
 #x: 1-25
 #y: 1-19
